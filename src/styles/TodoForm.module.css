@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Maven+Pro:wght@400;500;600;700&display=swap");
+
+.FormHeader {
+	margin: 1rem 0 0 0;
+}
+.FormHeader h3 {
+	font-family: "Maven Pro";
+	font-size: 25pt;
+	margin: 0;
+}
+.FormHeader p {
+	display: block;
+	margin: 10px 0 15px 0;
+	font-family: "Inter";
+	font-size: 14pt;
+	font-weight: 500;
+}
+.Input {
+	display: flex;
+	margin: 0 0 5vh 0;
+}
+
+input[type="text"] {
+	display: flex;
+	flex-wrap: wrap;
+	width: 60vh;
+	padding: 1rem;
+	outline: none;
+	border: 0.1rem solid #ccc;
+	border-radius: 5px 0 0 5px;
+	border-right: none;
+	font-family: Inter;
+	font-size: 12pt;
+}
+::placeholder {
+	font-style: italic;
+}
+
+.AddButton {
+	background: #0d73ec;
+}
+.AddButton:hover {
+	background: #0865d6;
+}

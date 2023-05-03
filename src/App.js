@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import TodoList from "./components/TodoList";
+import CompletedTodoList from "./components/CompletedTodoList";
+import TodoForm from "./components/TodoForm";
+
+const LOCAL_STORAGE_KEY = "todosApp.todos";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [todos, setTodos] = useState([]);
+
+	useEffect(() => {
+		const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+		if (storedTodos) setTodos(storedTodos);
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+	}, [todos]);
+
+	function addTodo(todo) {
+		setTodos((prevTodos) => {
+			return [todo, ...prevTodos];
+		});
+	}
+
+	function toggleCompleteTodo(id) {
+		const newTodos = [...todos];
+		const todo = newTodos.find((todo) => todo.id === id);
+		todo.complete = !todo.complete;
+		setTodos(newTodos);
+	}
+
+	function deleteTodo(id) {
+		const newTodos = [...todos];
+		setTodos(newTodos.filter((todo) => id !== todo.id));
+	}
+	function clearCompleted(todos) {
+		const newTodos = todos.filter((todo) => !todo.complete);
+		setTodos(newTodos);
+	}
+
+	return (
+		<div className="TodoApp">
+			<TodoForm addTodo={addTodo} />
+			<TodoList
+				todos={todos}
+				toggleCompleteTodo={toggleCompleteTodo}
+				deleteTodo={deleteTodo}
+			/>
+			<CompletedTodoList
+				todos={todos}
+				clearCompleted={clearCompleted}
+				toggleCompleteTodo={toggleCompleteTodo}
+			/>
+		</div>
+	);
 }
 
 export default App;

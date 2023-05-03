@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Maven+Pro:wght@400;500;600;700&display=swap");
+
+.CompletedListHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	font-family: "Maven Pro";
+}
+.CompletedListHeader h3 {
+	font-size: 22pt;
+	margin: 0;
+}
+.CompletedListHeader p {
+	display: block;
+	margin: 10px 0 15px 0;
+	font-family: "Inter";
+}
+.CompletedTodo {
+	display: flex;
+	align-items: center;
+	background: #79d58a;
+	margin: 10px 0;
+	padding: 1rem;
+	font-family: "Inter";
+	font-size: 11pt;
+	border-radius: 5px;
+}
+.CompletedTodo:first-child {
+	margin-top: 0;
+}
+.CompletedTodo:last-child {
+	margin-bottom: 0;
+}
+.ClearButton {
+	font-family: "Maven Pro";
+	font-size: 10pt;
+	font-weight: 500;
+	padding: 0 1rem;
+	background: none;
+	border-radius: 50px;
+	height: 2rem;
+	transition: all 0.2s;
+}
+.ClearButton:hover {
+	background: #e7e7e7;
+}
+.CompletedList {
+	margin: 0;
+}
+.CheckBoxIcon {
+	padding-right: 1rem;
+}
