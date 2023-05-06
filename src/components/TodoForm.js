@@ -30,7 +30,7 @@ export default function TodoForm({ addTodo }) {
 				<input
 					type="text"
 					placeholder="Add a task"
-					maxLength={40}
+					maxLength={45}
 					value={name}
 					onChange={setTodoName}
 				/>

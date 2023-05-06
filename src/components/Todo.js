@@ -19,7 +19,7 @@ export default function Todo({ todo, toggleCompleteTodo, deleteTodo }) {
 				<Checkbox
 					checked={todo.complete}
 					onChange={handleTodoChecked}
-					sx={{ width: 20, height: 20, color: "#ccc" }}
+					sx={{ width: 20, height: 20, color: "#999999", pr: 4 }}
 				/>
 				{todo.name}
 			</div>

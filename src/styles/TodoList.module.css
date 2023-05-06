@@ -16,17 +16,6 @@
 	width: calc(100%-1rem);
 	max-width: calc(100%-1rem);
 }
-input[type="checkbox"] {
-	/* appearance: none; */
-	border: 1px solid #ebebeb;
-	width: 15px;
-	height: 15px;
-	margin: 0;
-	margin-right: 1rem;
-	cursor: pointer;
-}
-input[type="checkbox"]:hover {
-}
 
 .TodoName {
 	display: flex;
