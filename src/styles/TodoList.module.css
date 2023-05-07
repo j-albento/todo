@@ -2,6 +2,8 @@
 
 .TodoList {
 	margin: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 .Todo {
@@ -44,4 +46,19 @@
 
 .DeleteButton:hover {
 	background: #c2001a;
+}
+.ClearButton {
+	margin: 0;
+	align-self: flex-end;
+	font-family: "Maven Pro";
+	font-size: 10pt;
+	font-weight: 500;
+	padding: 0 1rem;
+	background: none;
+	border-radius: 50px;
+	height: 2rem;
+	transition: all 0.2s;
+}
+.ClearButton:hover {
+	background: #e7e7e7;
 }

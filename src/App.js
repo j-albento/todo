@@ -39,6 +39,10 @@ function App() {
 		const newTodos = todos.filter((todo) => !todo.complete);
 		setTodos(newTodos);
 	}
+	function clearTodos(todos) {
+		const newTodos = todos.filter((todo) => todo.complete);
+		setTodos(newTodos);
+	}
 
 	return (
 		<div className="TodoApp">
@@ -47,6 +51,7 @@ function App() {
 				todos={todos}
 				toggleCompleteTodo={toggleCompleteTodo}
 				deleteTodo={deleteTodo}
+				clearTodos={clearTodos}
 			/>
 			<CompletedTodoList
 				todos={todos}
