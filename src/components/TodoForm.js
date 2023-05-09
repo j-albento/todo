@@ -23,7 +23,7 @@ export default function TodoForm({ addTodo }) {
 		<div className={styles.TodoForm}>
 			<div className={styles.FormHeader}>
 				<h3>Todo List</h3>
-				<p>Lets get things done.</p>
+				<p>Let's get things done.</p>
 			</div>
 
 			<form className={styles.Input} onSubmit={handleAddTodo}>

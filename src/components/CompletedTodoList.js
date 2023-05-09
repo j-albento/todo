@@ -30,7 +30,7 @@ export default function CompletedTodoList({
 					<p>You have no completed tasks.</p>
 				)}
 			</div>
-			<></>
+
 			<div className={styles.CompletedList}>
 				{todos.map((todo) => {
 					if (todo.complete) {

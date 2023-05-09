@@ -21,7 +21,7 @@
 	display: flex;
 	align-items: center;
 	background: #79d58a;
-	margin: 10px 0;
+	margin: 0.5rem 0;
 	padding: 1rem;
 	font-family: "Inter";
 	font-size: 11pt;
@@ -31,7 +31,7 @@
 	margin-top: 0;
 }
 .CompletedTodo:last-child {
-	margin-bottom: 0;
+	margin-bottom: 5rem;
 }
 .ClearButton {
 	font-family: "Maven Pro";
