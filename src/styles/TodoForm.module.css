@@ -23,7 +23,7 @@
 input[type="text"] {
 	display: flex;
 	flex-wrap: wrap;
-	width: 60vh;
+	width: 100%;
 	padding: 1rem;
 	outline: none;
 	border: 0.1rem solid #ccc;
