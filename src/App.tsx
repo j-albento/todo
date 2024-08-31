@@ -4,6 +4,7 @@ import "./App.css";
 import { Todo } from "./components/models/todo";
 
 import TodoItem from "./components/TodoItem";
+import { Container } from "react-bootstrap";
 
 function App() {
     const [todos, setTodos] = useState<Todo[]>([]);
@@ -20,11 +21,11 @@ function App() {
     }, []);
 
     return (
-        <div>
+        <Container>
             {todos.map((todo) => (
                 <TodoItem key={todo.id} todo={todo} />
             ))}
-        </div>
+        </Container>
     );
 }
 
