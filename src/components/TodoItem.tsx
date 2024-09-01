@@ -1,40 +1,44 @@
 import * as Icon from "react-bootstrap-icons";
 import { Todo } from "./models/todo";
 import { useState } from "react";
-import { Button, Container, InputGroup } from "react-bootstrap";
 
 interface Props {
     todo: Todo;
+    completeTodo: (id: string) => void;
 }
 
-export default function TodoItem({ todo }: Props) {
+export default function TodoItem({ todo, completeTodo }: Props) {
     const [isChecked, setIsChecked] = useState(todo.complete);
 
     function handleCheckedTodo() {
         setIsChecked(!isChecked);
+        completeTodo(todo.id);
     }
 
     return (
-        <Container fluid>
-            <InputGroup className="mb-2">
-                <InputGroup.Checkbox
-                    checked={todo.complete}
-                    onChange={handleCheckedTodo}
-                />
-                <label>{todo.name}</label>
+        <div className="form-check">
+            <input
+                className="form-check-input"
+                type="checkbox"
+                id="todoCheck"
+                checked={todo.complete}
+                onChange={handleCheckedTodo}
+            />
+            <label className="form-check-label" htmlFor="todoCheck">
+                {todo.name}
+            </label>
 
-                <Button>
-                    <Icon.PencilSquare />
-                </Button>
+            <button>
+                <Icon.PencilSquare />
+            </button>
 
-                <Button>
-                    <Icon.Trash />
-                </Button>
+            <button>
+                <Icon.Trash />
+            </button>
 
-                <Button>
-                    <Icon.Pin />
-                </Button>
-            </InputGroup>
-        </Container>
+            <button>
+                <Icon.Pin />
+            </button>
+        </div>
     );
 }
