@@ -8,7 +8,7 @@ interface Props {
     completeTodo: (id: string) => void;
     deleteTodo: (id: string) => void;
     pinTodo: (id: string) => void;
-    editTodo: (id: string) => void;
+    editTodo: (id: string, name: string) => void;
 }
 
 export default function TodoItem({
