@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 import { Todo } from "./components/models/todo";
@@ -17,10 +17,9 @@ function App() {
         },
     ]);
 
-    // useEffect(() => {
-    //     // dummy todos array
-    //     setTodos([]);
-    // }, []);
+    useEffect(() => {
+        console.log(todos);
+    }, [todos]);
 
     function addTodo(todo: Todo) {
         setTodos((prevTodos) => {
@@ -28,10 +27,30 @@ function App() {
         });
     }
 
+    function deleteTodo(id: string) {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    }
+
+    function editTodo(id: string, name: string) {
+        setTodos(
+            todos.map((todo) =>
+                todo.id === id ? { ...todo, name: name } : todo
+            )
+        );
+    }
+
     function completeTodo(id: string) {
         setTodos(
             todos.map((todo) =>
                 todo.id === id ? { ...todo, complete: !todo.complete } : todo
+            )
+        );
+    }
+
+    function pinTodo(id: string) {
+        setTodos(
+            todos.map((todo) =>
+                todo.id === id ? { ...todo, pinned: !todo.pinned } : todo
             )
         );
     }
@@ -44,6 +63,9 @@ function App() {
                     key={todo.id}
                     todo={todo}
                     completeTodo={completeTodo}
+                    deleteTodo={deleteTodo}
+                    editTodo={editTodo}
+                    pinTodo={pinTodo}
                 />
             ))}
         </div>

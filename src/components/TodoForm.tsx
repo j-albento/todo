@@ -16,15 +16,16 @@ export default function TodoForm({ addTodo }: Props) {
 
     const [todo, setTodo] = useState(initialState);
 
-    function handleInput(event: ChangeEvent<HTMLInputElement>) {
-        const taskName = event.target.value;
+    function handleInputOnChange(event: ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.target;
 
-        setTodo({ ...todo, name: taskName });
+        setTodo({ ...todo, [name]: value });
     }
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        addTodo({ ...todo, id: shortid.generate() });
+
+        if (todo) addTodo({ ...todo, id: shortid.generate() });
         setTodo(initialState);
     }
 
@@ -35,14 +36,14 @@ export default function TodoForm({ addTodo }: Props) {
                     type="text"
                     className="form-control"
                     placeholder="Add a task"
-                    id="taskName"
-                    name="taskName"
-                    onChange={handleInput}
+                    id="todoName"
+                    name="name"
+                    value={todo.name}
+                    onChange={handleInputOnChange}
+                    autoComplete="off"
                 />
 
-                <button type="submit" onClick={() => handleSubmit}>
-                    Add Item
-                </button>
+                <button type="submit">Add Item</button>
             </div>
         </form>
     );
