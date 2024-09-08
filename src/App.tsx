@@ -5,20 +5,17 @@ import { Todo } from "./components/models/todo";
 
 import TodoItem from "./components/TodoItem";
 import TodoForm from "./components/TodoForm";
-import shortid from "shortid";
+
+const LOCAL_STORAGE_KEY = "todoApp.todos";
 
 function App() {
-    const [todos, setTodos] = useState<Todo[]>([
-        {
-            id: shortid.generate(),
-            name: "test todo",
-            complete: false,
-            pinned: false,
-        },
-    ]);
+    const [todos, setTodos] = useState<Todo[]>(() => {
+        const storedTodos = localStorage.getItem(LOCAL_STORAGE_KEY);
+        return storedTodos ? JSON.parse(storedTodos) : [];
+    });
 
     useEffect(() => {
-        console.log(todos);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
     }, [todos]);
 
     function addTodo(todo: Todo) {

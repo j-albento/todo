@@ -20,8 +20,11 @@ export default function EditTodo({ selectedTodo, editTodo, isEditing }: Props) {
         event.preventDefault();
 
         // handle if the name is empty
-
         editTodo(updatedTodo.id, updatedTodo.name);
+        isEditing(false);
+    }
+
+    function handleCancelSubmit() {
         isEditing(false);
     }
 
@@ -38,7 +41,7 @@ export default function EditTodo({ selectedTodo, editTodo, isEditing }: Props) {
                 />
 
                 <button type="submit">Save</button>
-                <button>Cancel</button>
+                <button onClick={handleCancelSubmit}>Cancel</button>
             </form>
         </div>
     );

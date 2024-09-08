@@ -3,7 +3,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import shortid from "shortid";
 
 interface Props {
-    addTodo: (todo: Todo) => void; // returns a void function with a parameter of the todo item to be added
+    addTodo: (todo: Todo) => void;
 }
 
 export default function TodoForm({ addTodo }: Props) {
@@ -30,8 +30,8 @@ export default function TodoForm({ addTodo }: Props) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="form-check">
+        <form className="row g-2" onSubmit={handleSubmit}>
+            <div className="col-auto">
                 <input
                     type="text"
                     className="form-control"
@@ -42,8 +42,9 @@ export default function TodoForm({ addTodo }: Props) {
                     onChange={handleInputOnChange}
                     autoComplete="off"
                 />
-
-                <button type="submit">Add Item</button>
+            </div>
+            <div className="col-auto">
+                <button type="submit">Add</button>
             </div>
         </form>
     );
