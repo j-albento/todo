@@ -25,27 +25,29 @@ export default function TodoForm({ addTodo }: Props) {
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        if (todo) addTodo({ ...todo, id: shortid.generate() });
+        if (todo.name === "") {
+            return;
+        }
+        addTodo({ ...todo, id: shortid.generate() });
+
         setTodo(initialState);
     }
 
     return (
-        <form className="row g-2" onSubmit={handleSubmit}>
-            <div className="col-auto">
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Add a task"
-                    id="todoName"
-                    name="name"
-                    value={todo.name}
-                    onChange={handleInputOnChange}
-                    autoComplete="off"
-                />
-            </div>
-            <div className="col-auto">
-                <button type="submit">Add</button>
-            </div>
+        <form className="d-flex" onSubmit={handleSubmit}>
+            <input
+                type="text"
+                className="form-control me-2"
+                placeholder="Add a task"
+                id="todoName"
+                name="name"
+                value={todo.name}
+                onChange={handleInputOnChange}
+                autoComplete="off"
+            />
+            <button className="btn btn-primary" type="submit">
+                Add
+            </button>
         </form>
     );
 }

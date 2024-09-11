@@ -41,7 +41,7 @@ export default function TodoItem({
     }
 
     return (
-        <div className="form-check">
+        <div className="container form-check">
             {isEdit ? (
                 <EditTodo
                     selectedTodo={todo}
@@ -49,27 +49,34 @@ export default function TodoItem({
                     isEditing={handleIsEditing}
                 />
             ) : (
-                <>
-                    <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="todoCheck"
-                        checked={todo.complete}
-                        onChange={handleCheckedTodo}
-                    />
-                    <label className="form-check-label" htmlFor="todoCheck">
-                        {todo.name}
-                    </label>
-                    <button onClick={() => setIsEdit(true)}>
-                        <Icon.PencilSquare />
-                    </button>
-                    <button onClick={handleDeleteTodo}>
-                        <Icon.Trash />
-                    </button>
-                    <button onClick={handlePinTodo}>
-                        <Icon.Pin />
-                    </button>
-                </>
+                <div className="d-flex justify-content-between">
+                    <div className="align-self-center">
+                        <input
+                            className="form-check-input "
+                            type="checkbox"
+                            id="todoCheckBox"
+                            checked={todo.complete}
+                            onChange={handleCheckedTodo}
+                        />
+                        <label
+                            className="form-check-label"
+                            htmlFor="todoCheckBox"
+                        >
+                            {todo.name}
+                        </label>
+                    </div>
+                    <div>
+                        <button onClick={() => setIsEdit(true)}>
+                            <Icon.PencilSquare />
+                        </button>
+                        <button onClick={handleDeleteTodo}>
+                            <Icon.Trash />
+                        </button>
+                        <button onClick={handlePinTodo}>
+                            <Icon.Pin />
+                        </button>
+                    </div>
+                </div>
             )}
         </div>
     );
