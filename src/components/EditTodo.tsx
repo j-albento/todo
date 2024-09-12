@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Todo } from "./models/todo";
 
 interface Props {
@@ -16,9 +16,7 @@ export default function EditTodo({ selectedTodo, editTodo, isEditing }: Props) {
         setUpdatedTodo({ ...updatedTodo, [name]: value });
     }
 
-    function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-
+    function handleSubmit() {
         // handle if the name is empty
         if (updatedTodo.name === "") {
             return;
@@ -32,19 +30,35 @@ export default function EditTodo({ selectedTodo, editTodo, isEditing }: Props) {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    className="form-control"
-                    name="name"
-                    id={updatedTodo.id}
-                    value={updatedTodo.name}
-                    onChange={handleInputOnChange}
-                />
-                <button type="submit">Save</button>
-                <button onClick={handleCancelSubmit}>Cancel</button>
-            </form>
-        </div>
+        <form className="d-flex flex-column" onSubmit={handleSubmit}>
+            <div className="row g-2">
+                <div className="col-12">
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="name"
+                        id={updatedTodo.id}
+                        value={updatedTodo.name}
+                        onChange={handleInputOnChange}
+                    />
+                </div>
+                <div className="col-12 d-flex justify-content-end">
+                    <button
+                        type="button"
+                        className="btn btn-success me-2"
+                        onClick={handleSubmit}
+                    >
+                        Save
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={handleCancelSubmit}
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
     );
 }

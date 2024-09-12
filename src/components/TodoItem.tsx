@@ -2,6 +2,7 @@ import * as Icon from "react-bootstrap-icons";
 import { Todo } from "./models/todo";
 import { useState } from "react";
 import EditTodo from "./EditTodo";
+import "../App.css";
 
 interface Props {
     todo: Todo;
@@ -59,21 +60,29 @@ export default function TodoItem({
                             onChange={handleCheckedTodo}
                         />
                         <label
-                            className="form-check-label"
+                            className="form-check-label text-break"
+                            style={{ maxWidth: "500px" }}
                             htmlFor="todoCheckBox"
                         >
                             {todo.name}
                         </label>
                     </div>
                     <div>
-                        <button onClick={() => setIsEdit(true)}>
-                            <Icon.PencilSquare />
+                        <button
+                            className="custom-btn"
+                            onClick={() => setIsEdit(true)}
+                        >
+                            <Icon.PencilSquare size={18} />
                         </button>
-                        <button onClick={handleDeleteTodo}>
-                            <Icon.Trash />
+
+                        <button
+                            className="custom-btn"
+                            onClick={handleDeleteTodo}
+                        >
+                            <Icon.Trash size={18} />
                         </button>
-                        <button onClick={handlePinTodo}>
-                            <Icon.Pin />
+                        <button className="custom-btn" onClick={handlePinTodo}>
+                            <Icon.Pin size={18} />
                         </button>
                     </div>
                 </div>

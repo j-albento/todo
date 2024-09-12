@@ -56,7 +56,7 @@ export default function App() {
     }
 
     return (
-        <div className="container p-0">
+        <div className="container p-0 mt-5">
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <TodoForm addTodo={addTodo} />
